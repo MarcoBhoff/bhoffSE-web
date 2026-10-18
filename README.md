@@ -1,4 +1,4 @@
-# bhoff.se – v6
+# bhoff.se – v7
 
 En enda statisk sida. Inget byggsteg: allt i `public/` publiceras som det är.
 
