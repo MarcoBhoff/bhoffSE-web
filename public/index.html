@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- bhoff.se – v1 -->
+<!-- bhoff.se – v2 -->
 <html lang="sv">
 <head>
   <meta charset="utf-8" />
@@ -22,13 +22,9 @@
 
     :root {
       color-scheme: dark;
-      --bg: #1e2a44;          /* marinblå från logobilden */
+      --bg: #0b0a10;          /* nästan svart, lätt violett som videon */
       --ink: #ffffff;
       --soft: rgba(255, 255, 255, .78);
-      --logo-ink: #1a1a1a;
-      --pill-pink: #f6dcf6;
-      --pill-rosa: #f4cce4;
-      --pill-bla: #bce0e7;
       --r: 1rem;
       --gap: 8px;
       --font: "Figtree", system-ui, sans-serif;
@@ -40,11 +36,7 @@
     .ram { min-height: 100svh; display: grid; grid-template-rows: auto 1fr; gap: var(--gap); padding: var(--gap); max-width: 1440px; margin: 0 auto; }
 
     .site-header { display: flex; align-items: center; min-height: 64px; padding-inline: max(12px, min(4vw, 3rem)); }
-    .logo { display: inline-block; font-weight: 800; font-size: 1.9rem; line-height: 1; letter-spacing: -0.01em; color: var(--logo-ink);
-      padding: .28em .5em .34em; border: 3px solid #fff; border-radius: .45em;
-      background:
-        radial-gradient(120% 140% at 75% 110%, var(--pill-rosa) 0%, transparent 60%),
-        linear-gradient(105deg, var(--pill-pink) 0%, #efe0f3 55%, var(--pill-bla) 100%); }
+    .logo { font-weight: 800; font-size: 2rem; line-height: 1; letter-spacing: -0.01em; color: var(--ink); }
 
     .hero { position: relative; border-radius: var(--r); overflow: hidden; overflow: clip; background: #0d0a14; display: grid; align-items: center; min-height: 420px; }
     .hero video, .hero .poster { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
