@@ -1,0 +1,6 @@
+// bhoff.se – Cloudflare Workers med statiska filer (samma upplägg som mullra-web). Inget byggsteg.
+{
+  "name": "bhoff-web",
+  "compatibility_date": "2026-10-16",
+  "assets": { "directory": "./public" }
+}

@@ -1,0 +1,89 @@
+<!doctype html>
+<!-- bhoff.se – v1 -->
+<html lang="sv">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>bhoff – vi hjälper företag att förverkliga sin fulla potential</title>
+  <meta name="description" content="Vi hjälper företag att förverkliga sin fulla potential. Stängt för nya kunder – hör av dig till Marco på LinkedIn." />
+  <link rel="canonical" href="https://bhoff.se/" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="preload" href="/fonts/figtree-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="bhoff" />
+  <meta property="og:title" content="bhoff" />
+  <meta property="og:description" content="Vi hjälper företag att förverkliga sin fulla potential." />
+  <meta property="og:url" content="https://bhoff.se/" />
+  <meta property="og:image" content="https://bhoff.se/media/poster.jpg" />
+  <meta property="og:locale" content="sv_SE" />
+  <style>
+    @font-face { font-family: "Figtree"; font-weight: 500; font-style: normal; font-display: swap; src: url("/fonts/figtree-latin-500-normal.woff2") format("woff2"); }
+    @font-face { font-family: "Figtree"; font-weight: 800; font-style: normal; font-display: swap; src: url("/fonts/figtree-latin-800-normal.woff2") format("woff2"); }
+
+    :root {
+      color-scheme: dark;
+      --bg: #1e2a44;          /* marinblå från logobilden */
+      --ink: #ffffff;
+      --soft: rgba(255, 255, 255, .78);
+      --logo-ink: #1a1a1a;
+      --pill-pink: #f6dcf6;
+      --pill-rosa: #f4cce4;
+      --pill-bla: #bce0e7;
+      --r: 1rem;
+      --gap: 8px;
+      --font: "Figtree", system-ui, sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font); font-weight: 500; font-size: 17px; line-height: 1.55; -webkit-text-size-adjust: 100%; }
+
+    .ram { min-height: 100svh; display: grid; grid-template-rows: auto 1fr; gap: var(--gap); padding: var(--gap); max-width: 1440px; margin: 0 auto; }
+
+    .site-header { display: flex; align-items: center; min-height: 64px; padding-inline: max(12px, min(4vw, 3rem)); }
+    .logo { display: inline-block; font-weight: 800; font-size: 1.9rem; line-height: 1; letter-spacing: -0.01em; color: var(--logo-ink);
+      padding: .28em .5em .34em; border: 3px solid #fff; border-radius: .45em;
+      background:
+        radial-gradient(120% 140% at 75% 110%, var(--pill-rosa) 0%, transparent 60%),
+        linear-gradient(105deg, var(--pill-pink) 0%, #efe0f3 55%, var(--pill-bla) 100%); }
+
+    .hero { position: relative; border-radius: var(--r); overflow: hidden; overflow: clip; background: #0d0a14; display: grid; align-items: center; min-height: 420px; }
+    .hero video, .hero .poster { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(10, 8, 18, .72) 0%, rgba(10, 8, 18, .35) 60%, rgba(10, 8, 18, .1) 100%); }
+    .hero-text { position: relative; z-index: 1; display: grid; gap: 1.1rem; justify-items: start; padding-block: 3.5rem; padding-inline: max(20px, min(6vw, 5rem)); max-width: 1100px; width: 100%; margin: 0 auto; }
+
+    h1 { font-weight: 800; font-size: clamp(2rem, 1.5rem + 2.4vw, 3.75rem); line-height: 1.05; letter-spacing: -0.02em; margin: 0; max-width: 18ch; text-wrap: balance; }
+    .stangt { display: inline-block; margin: .6rem 0 0; font-weight: 800; font-size: .9rem; letter-spacing: .08em; text-transform: uppercase; padding: .45rem .8rem; border: 1px solid rgba(255,255,255,.5); border-radius: 999px; }
+    .lede { margin: 0; font-size: 1.2rem; max-width: 42ch; color: var(--soft); }
+    .linkedin { display: inline-flex; align-items: center; gap: .6rem; color: var(--ink); text-decoration: none; font-weight: 800; min-height: 48px; }
+    .linkedin svg { width: 40px; height: 40px; flex: none; transition: transform .15s; }
+    .linkedin:hover svg { transform: scale(1.06); }
+    .linkedin:hover span { text-decoration: underline; text-underline-offset: .18em; }
+    :focus-visible { outline: 2px solid #fff; outline-offset: 3px; border-radius: 4px; }
+
+    @media (prefers-reduced-motion: reduce) { .hero video { display: none; } }
+  </style>
+</head>
+<body>
+  <div class="ram">
+    <header class="site-header">
+      <span class="logo">bhoff</span>
+    </header>
+    <main class="hero" aria-labelledby="titel">
+      <img class="poster" src="/media/poster.jpg" alt="" />
+      <video autoplay muted loop playsinline preload="auto" poster="/media/poster.jpg" aria-hidden="true">
+        <source src="/media/bakgrund-720.mp4" type="video/mp4" media="(max-width: 900px)" />
+        <source src="/media/bakgrund-1080.mp4" type="video/mp4" />
+      </video>
+      <div class="hero-text">
+        <h1 id="titel">Vi hjälper företag att förverkliga sin fulla potential.</h1>
+        <p class="stangt">Stängt för nya kunder</p>
+        <p class="lede">Hör av dig till Marco på LinkedIn för att höra mer.</p>
+        <a class="linkedin" href="LINKEDIN_URL" target="_blank" rel="noopener" aria-label="Marco på LinkedIn">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect width="24" height="24" rx="4" fill="#0a66c2"/><path fill="#fff" d="M7.1 9.6H4.6V19h2.5V9.6zM5.85 5.2a1.45 1.45 0 1 0 0 2.9 1.45 1.45 0 0 0 0-2.9zM19.4 19h-2.5v-4.6c0-1.1-.1-2.5-1.6-2.5s-1.8 1.2-1.8 2.4V19H11V9.6h2.4v1.3c.35-.64 1.15-1.3 2.4-1.3 2.55 0 3.6 1.7 3.6 3.9V19z"/></svg>
+          <span>Marco på LinkedIn</span>
+        </a>
+      </div>
+    </main>
+  </div>
+</body>
+</html>
