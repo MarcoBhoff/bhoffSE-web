@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- bhoff.se – v5 -->
+<!-- bhoff.se – v6 -->
 <html lang="sv">
 <head>
   <meta charset="utf-8" />
@@ -33,7 +33,7 @@
     html, body { height: 100%; }
     body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font); font-weight: 500; font-size: 17px; line-height: 1.55; -webkit-text-size-adjust: 100%; }
 
-    .ram { min-height: 100svh; display: grid; grid-template-rows: auto 1fr; gap: var(--gap); padding: var(--gap); max-width: 1440px; margin: 0 auto; }
+    .ram { min-height: 100svh; display: grid; grid-template-rows: auto 1fr auto; gap: var(--gap); padding: var(--gap); max-width: 1440px; margin: 0 auto; }
 
     .site-header { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 64px; padding-inline: max(12px, min(4vw, 3rem)); }
     .idag { display: flex; align-items: center; gap: .75rem; margin: 0; font-size: .95rem; color: var(--soft); white-space: nowrap; }
@@ -56,6 +56,7 @@
     .linkedin:hover span { text-decoration: underline; text-underline-offset: .18em; }
     :focus-visible { outline: 2px solid #fff; outline-offset: 3px; border-radius: 4px; }
 
+    .sidfot { margin: 0; font-size: .85rem; color: var(--soft); padding: .4rem max(12px, min(4vw, 3rem)) 1rem; }
     @media (prefers-reduced-motion: reduce) { .hero video { display: none; } }
   </style>
 </head>
@@ -80,6 +81,7 @@
         </a>
       </div>
     </main>
+    <p class="sidfot">bhoff AB · Stockholm · Org.nr ORGNR · Biblioteksgatan 29, 114 35 Stockholm</p>
   </div>
   <script src="/app.js" defer></script>
 </body>
