@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- bhoff.se – v8 -->
+<!-- bhoff.se – v9 -->
 <html lang="sv">
 <head>
   <meta charset="utf-8" />
@@ -50,10 +50,9 @@
     h1 { font-weight: 800; font-size: clamp(2rem, 1.5rem + 2.4vw, 3.75rem); line-height: 1.05; letter-spacing: -0.02em; margin: 0; max-width: 18ch; text-wrap: balance; }
     .stangt { display: inline-block; margin: .6rem 0 0; font-weight: 800; font-size: .9rem; letter-spacing: .08em; text-transform: uppercase; padding: .45rem .8rem; border: 1px solid rgba(255,255,255,.5); border-radius: 999px; }
     .lede { margin: 0; font-size: 1.2rem; max-width: 42ch; color: var(--soft); }
-    .linkedin { display: inline-flex; align-items: center; gap: .6rem; color: var(--ink); text-decoration: none; font-weight: 800; min-height: 48px; }
-    .linkedin svg { width: 40px; height: 40px; flex: none; transition: transform .15s; }
-    .linkedin:hover svg { transform: scale(1.06); }
-    .linkedin:hover span { text-decoration: underline; text-underline-offset: .18em; }
+    .linkedin { display: inline-flex; align-items: center; gap: .6rem; margin-top: .4rem; background: #fff; color: #111; text-decoration: none; font-weight: 800; font-size: 1.05rem; min-height: 48px; padding: .55rem 1.1rem .55rem .7rem; border-radius: 6px; transition: background .15s, transform .15s; }
+    .linkedin svg { width: 26px; height: 26px; flex: none; }
+    .linkedin:hover { background: #e9e9ee; transform: translateY(-1px); }
     :focus-visible { outline: 2px solid #fff; outline-offset: 3px; border-radius: 4px; }
 
     .sidfot { margin: 0; font-size: .85rem; color: var(--soft); padding: .4rem max(12px, min(4vw, 3rem)) 1rem; }
