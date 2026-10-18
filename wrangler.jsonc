@@ -1,6 +1,8 @@
-// bhoff.se – Cloudflare Workers med statiska filer (samma upplägg som mullra-web). Inget byggsteg.
+// bhoff.se – Cloudflare Workers. Statiska filer från public/, src/worker.js svarar bara på /api/vader. Inget byggsteg.
 {
-  "name": "bhoff-web",
+  "name": "bhoffse-web",
+  "main": "src/worker.js",
   "compatibility_date": "2026-10-16",
-  "assets": { "directory": "./public" }
+  "assets": { "directory": "./public", "binding": "ASSETS" },
+  "previews": {}
 }

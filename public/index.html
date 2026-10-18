@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- bhoff.se – v4 -->
+<!-- bhoff.se – v5 -->
 <html lang="sv">
 <head>
   <meta charset="utf-8" />
@@ -35,7 +35,11 @@
 
     .ram { min-height: 100svh; display: grid; grid-template-rows: auto 1fr; gap: var(--gap); padding: var(--gap); max-width: 1440px; margin: 0 auto; }
 
-    .site-header { display: flex; align-items: center; min-height: 64px; padding-inline: max(12px, min(4vw, 3rem)); }
+    .site-header { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 64px; padding-inline: max(12px, min(4vw, 3rem)); }
+    .idag { display: flex; align-items: center; gap: .75rem; margin: 0; font-size: .95rem; color: var(--soft); white-space: nowrap; }
+    .idag span + span { border-left: 1px solid rgba(255, 255, 255, .3); padding-left: .75rem; }
+    .idag [hidden] { display: none; }
+    @media (max-width: 420px) { .idag { font-size: .85rem; gap: .5rem; } .idag span + span { padding-left: .5rem; } }
     .logo { font-weight: 800; font-size: 2rem; line-height: 1; letter-spacing: -0.01em; color: var(--ink); }
 
     .hero { position: relative; border-radius: var(--r); overflow: hidden; overflow: clip; background: #0d0a14; display: grid; align-items: center; min-height: 420px; }
@@ -59,6 +63,7 @@
   <div class="ram">
     <header class="site-header">
       <span class="logo">bhoff</span>
+      <p class="idag"><span id="dag"></span><span id="vader" hidden></span></p>
     </header>
     <main class="hero" aria-labelledby="titel">
       <img class="poster" src="/media/poster.jpg" alt="" />
@@ -76,5 +81,6 @@
       </div>
     </main>
   </div>
+  <script src="/app.js" defer></script>
 </body>
 </html>
