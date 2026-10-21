@@ -1,19 +1,37 @@
-// bhoff.se – v5. Dagens datum och aktuell temperatur i Stockholm i sidhuvudet.
+// bhoff.se – v11. Datum i sidhuvudet + väderruta i sidfoten (samma logik som mullra.se, egen text).
 (function () {
-  var dag = document.getElementById('dag');
-  var vader = document.getElementById('vader');
-  var txt = new Intl.DateTimeFormat('sv-SE', { timeZone: 'Europe/Stockholm', weekday: 'long', day: 'numeric', month: 'long' }).format(new Date());
-  dag.textContent = txt.charAt(0).toUpperCase() + txt.slice(1); // "Söndag 18 oktober"
+  var d = new Intl.DateTimeFormat('sv-SE', { timeZone: 'Europe/Stockholm', weekday: 'long', day: 'numeric', month: 'long' }).format(new Date());
+  document.getElementById('dag').textContent = d.charAt(0).toUpperCase() + d.slice(1); // "Onsdag 21 oktober"
 
+  // Väder från SMHI (prognos snow1g) via /api/vader (Worker, cache 15 min). Rutan döljs om SMHI inte svarar.
+  function ikon(k) {
+    if (k === 1 || k === 2) return '☀️';
+    if (k === 3 || k === 4) return '⛅';
+    if (k === 5 || k === 6) return '☁️';
+    if (k === 7) return '🌫️';
+    if (k === 11 || k === 21) return '⛈️';
+    if ((k >= 8 && k <= 10) || (k >= 18 && k <= 20)) return '🌧️';
+    if ((k >= 12 && k <= 17) || k >= 22) return '🌨️';
+    return '';
+  }
+  function dagnamn(om, datum) {
+    if (om === 0) return 'i dag';
+    if (om === 1) return 'i morgon';
+    return 'på ' + new Intl.DateTimeFormat('sv-SE', { weekday: 'long', timeZone: 'UTC' }).format(new Date(datum + 'T12:00:00Z'));
+  }
   fetch('/api/vader')
-    .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
-    .then(function (d) {
-      if (typeof d.temp !== 'number') return;
-      var t = Math.round(d.temp);
-      vader.textContent = 'Stockholm ' + (t === 0 ? 0 : t) + ' °C';
-      var kl = d.tid ? new Intl.DateTimeFormat('sv-SE', { timeZone: 'Europe/Stockholm', hour: '2-digit', minute: '2-digit' }).format(new Date(d.tid)) : '';
-      vader.title = 'Lufttemperatur från SMHI, ' + d.station + (kl ? ', uppmätt kl. ' + kl : '') + '. Avrundad till hela grader.';
-      vader.hidden = false;
+    .then(function (r) { return r.json(); })
+    .then(function (v) {
+      if (v.temp === null || v.temp === undefined) return;
+      var om = typeof v.askaOm === 'number' ? v.askaOm : null, box = document.getElementById('vader');
+      document.getElementById('vader-temp').textContent = v.temp + ' °C';
+      document.getElementById('vader-ikon').textContent = v.natt ? '🌙' : ikon(v.symbol);
+      document.getElementById('vader-text').textContent =
+        om === 0 ? 'SMHI lovar åska i dag.'
+        : om !== null ? 'SMHI lovar åska ' + dagnamn(om, v.askaDag) + '.'
+        : 'SMHI lovar ingen åska den kommande veckan.';
+      box.classList.toggle('aska', om === 0);
+      box.hidden = false;
     })
-    .catch(function () { /* inget väder visas om SMHI inte svarar */ });
+    .catch(function () {});
 })();
