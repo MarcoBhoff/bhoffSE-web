@@ -1,4 +1,4 @@
-// bhoff.se – v11. Datum i sidhuvudet + väderruta i sidfoten (samma logik som mullra.se, egen text).
+// bhoff.se – v12. Datum i sidhuvudet + väderruta i sidfoten (ikon och temperatur, ingen åska).
 (function () {
   var d = new Intl.DateTimeFormat('sv-SE', { timeZone: 'Europe/Stockholm', weekday: 'long', day: 'numeric', month: 'long' }).format(new Date());
   document.getElementById('dag').textContent = d.charAt(0).toUpperCase() + d.slice(1); // "Onsdag 21 oktober"
@@ -14,23 +14,13 @@
     if ((k >= 12 && k <= 17) || k >= 22) return '🌨️';
     return '';
   }
-  function dagnamn(om, datum) {
-    if (om === 0) return 'i dag';
-    if (om === 1) return 'i morgon';
-    return 'på ' + new Intl.DateTimeFormat('sv-SE', { weekday: 'long', timeZone: 'UTC' }).format(new Date(datum + 'T12:00:00Z'));
-  }
   fetch('/api/vader')
     .then(function (r) { return r.json(); })
     .then(function (v) {
       if (v.temp === null || v.temp === undefined) return;
-      var om = typeof v.askaOm === 'number' ? v.askaOm : null, box = document.getElementById('vader');
-      document.getElementById('vader-temp').textContent = v.temp + ' °C';
+      var box = document.getElementById('vader');
+      document.getElementById('vader-temp').textContent = v.temp + '\u00a0°C';
       document.getElementById('vader-ikon').textContent = v.natt ? '🌙' : ikon(v.symbol);
-      document.getElementById('vader-text').textContent =
-        om === 0 ? 'SMHI lovar åska i dag.'
-        : om !== null ? 'SMHI lovar åska ' + dagnamn(om, v.askaDag) + '.'
-        : 'SMHI lovar ingen åska den kommande veckan.';
-      box.classList.toggle('aska', om === 0);
       box.hidden = false;
     })
     .catch(function () {});
